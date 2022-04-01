@@ -1,3 +1,4 @@
+import sys
 import threading
 import time
 import random
@@ -17,18 +18,11 @@ def typewriter(name):
         if len(letters) >= 1:
             print("%s: %s\n" % (name, letters))
     if hamlet == letters:
-        solved = True
-        print("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
+        sys.exit("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
 
 f = open('hamlet.txt', 'r')
 hamlet = f.read()
-hamlet = ''.join(ch for ch in hamlet if ch.isalnum())
-hamlet = hamlet.lower()
-solved = False
+hamlet = ''.join(ch for ch in hamlet if ch.isalnum()).lower()
 
-monkeys = {}
-while solved == False:
-    for i in range(len(monkeys) + 1):
-        monkey = "monkey%d" % i
-        monkeys[monkey] = threading.Thread(target=typewriter, args=(names.get_first_name(),))
-        monkeys[monkey].start()
+while True:
+    monkey = threading.Thread(target=typewriter, args=(names.get_first_name(),), daemon=True).start()
