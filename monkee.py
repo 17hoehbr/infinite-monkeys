@@ -26,4 +26,4 @@ hamlet = f.read()
 hamlet = ''.join(ch for ch in hamlet if ch.isalnum()).lower()
 
 while True:
-    monkey = threading.Thread(target=typewriter, args=(names.get_first_name(),), daemon=True).start()
+    threading.Thread(target=typewriter, args=(names.get_first_name(),), daemon=True).start()
