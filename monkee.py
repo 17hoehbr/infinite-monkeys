@@ -33,6 +33,4 @@ while solved != True:
     for i in range(1):
         monkey = "monkey%d" % i
         monkeys[monkey] = threading.Thread(target=typewriter, args=(names.get_first_name(),))
-    for i in monkeys:
-        if not monkeys[i].is_alive():
-            monkeys[i].start()
+        monkeys[monkey].start()
