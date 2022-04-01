@@ -15,8 +15,8 @@ def typewriter(name):
         else:
             letters.clear()
             attempts = attempts + 1
-        if len(letters) >= 1:
-            print("%s: %s\n" % (name, letters))
+        if len(letters) > 0:
+            print("%s: %s\n" % (name, ''.join(letters)))
     if hamlet == letters:
         print("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
         os._exit(1)
