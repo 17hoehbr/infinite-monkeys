@@ -1,4 +1,4 @@
-import sys
+import os
 import threading
 import time
 import random
@@ -18,8 +18,9 @@ def typewriter(name):
         if len(letters) >= 1:
             print("%s: %s\n" % (name, letters))
     if hamlet == letters:
-        sys.exit("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
-
+        print("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
+        os._exit(1)
+        
 f = open('hamlet.txt', 'r')
 hamlet = f.read()
 hamlet = ''.join(ch for ch in hamlet if ch.isalnum()).lower()
