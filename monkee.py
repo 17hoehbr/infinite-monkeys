@@ -16,8 +16,9 @@ def typewriter(name):
             attempts = attempts + 1
         if len(letters) >= 1:
             print("%s: %s\n" % (name, letters))
-    solved = True
-    print("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
+    if hamlet == letters:
+        solved = True
+        print("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
 
 f = open('hamlet.txt', 'r')
 hamlet = f.read()
@@ -27,7 +28,7 @@ solved = False
 
 monkeys = {}
 while solved == False:
-    for i in range(1):
+    for i in range(len(monkeys) + 1):
         monkey = "monkey%d" % i
         monkeys[monkey] = threading.Thread(target=typewriter, args=(names.get_first_name(),))
         monkeys[monkey].start()
