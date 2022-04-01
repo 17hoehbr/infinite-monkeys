@@ -17,10 +17,9 @@ def typewriter(name):
             attempts = attempts + 1
         if len(letters) > 0:
             print("%s: %s\n" % (name, ''.join(letters)))
-    if hamlet == letters:
-        print("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
-        os._exit(1)
-        
+    print("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
+    os._exit(1)
+    
 f = open('hamlet.txt', 'r')
 hamlet = f.read()
 hamlet = ''.join(ch for ch in hamlet if ch.isalnum()).lower()
