@@ -4,11 +4,8 @@ import random
 import string
 import names
 
-solved = False
-
 def typewriter(name):
     letters = []
-    keystrokes = 0
     attempts = 0
     while hamlet != letters:
         letter = random.choice(string.ascii_lowercase)
@@ -19,17 +16,17 @@ def typewriter(name):
             attempts = attempts + 1
         if len(letters) >= 1:
             print("%s: %s\n" % (name, letters))
-        keystrokes = keystrokes + 1
-    print("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
     solved = True
+    print("Monkey %s successfully composed Hamlet after %s attempts." % (name, attempts))
 
 f = open('hamlet.txt', 'r')
 hamlet = f.read()
 hamlet = ''.join(ch for ch in hamlet if ch.isalnum())
 hamlet = hamlet.lower()
+solved = False
 
 monkeys = {}
-while solved != True:
+while solved == False:
     for i in range(1):
         monkey = "monkey%d" % i
         monkeys[monkey] = threading.Thread(target=typewriter, args=(names.get_first_name(),))
